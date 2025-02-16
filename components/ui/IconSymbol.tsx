@@ -12,7 +12,8 @@ const MAPPING = {
   'house.fill': 'home',
   'person.circle.fill': 'person',
   'waveform.path.ecg': 'show-chart',
-  'calendar': 'date-range'
+  'calendar': 'date-range',
+  'camera.shutter.button':'add-a-photo'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
@@ -30,12 +31,12 @@ export type IconSymbolName = keyof typeof MAPPING;
 export function IconSymbol({
   name,
   size = 24,
-  color,
+  color='',
   style,
 }: {
   name: IconSymbolName;
   size?: number;
-  color: string | OpaqueColorValue;
+  color?: string | OpaqueColorValue;
   style?: StyleProp<TextStyle>;
   weight?: SymbolWeight;
 }) {
