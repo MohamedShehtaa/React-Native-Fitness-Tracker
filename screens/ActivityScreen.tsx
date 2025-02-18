@@ -1,40 +1,67 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import ActivityButtons from "@/components/activity/ActivityButtons";
+import ActivityControlButtons from "@/components/activity/ActivityControlButtons";
+import ActivityStats from "@/components/activity/ActivityStats";
+import ActivityTimer from "@/components/activity/ActivityTimer";
+import MainCard from "@/components/ui/MainCard";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const Activity: React.FC = () => {
-  const [timeElapsed, setTimeElapsed] = useState(0);
-  const [steps, setSteps] = useState(0);
-  const [calories, setCalories] = useState(0);
+  const [timeElapsed, setTimeElapsed] = useState<number>(0);
+  const [steps, setSteps] = useState<number>(0);
+  const [calories, setCalories] = useState<number>(0);
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isActive) {
+      setSteps((prevSteps) => prevSteps + 1);
+      setCalories((prevCalories) => prevCalories + 0.1);
+    }
+  }, [timeElapsed]);
 
   const startActivity = () => {
-    // Implement activity tracking logic
+    if (!selectedActivity) {
+      alert("Please select an activity type!");
+      return;
+    }
+    setIsActive(true);
+  };
+
+  const pauseActivity = () => {
+    setIsActive(false);
+  };
+
+  const stopActivity = () => {
+    setIsActive(false);
+    setTimeElapsed(0);
+    setSteps(0);
+    setCalories(0);
+    setSelectedActivity(null);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.timer}>{timeElapsed}</Text>
-      <Text style={styles.stats}>{steps} Steps</Text>
-      <Text style={styles.stats}>{calories} Calories</Text>
-
-      <View style={styles.activityButtons}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Running</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Walking</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Cycling</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Gym</Text>
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity style={styles.startButton} onPress={startActivity}>
-        <Text style={styles.startButtonText}>Start</Text>
-      </TouchableOpacity>
+      <MainCard>
+        <ActivityTimer
+          isActive={isActive}
+          timeElapsed={timeElapsed}
+          setTimeElapsed={setTimeElapsed}
+        />
+        <ActivityControlButtons
+          isActive={isActive}
+          startActivity={startActivity}
+          pauseActivity={pauseActivity}
+          stopActivity={stopActivity}
+        />
+        <ActivityStats steps={steps} calories={calories} />
+      </MainCard>
+       <Text style={styles.subTitle}>Choose Activity</Text>
+      <ActivityButtons
+        selectedActivity={selectedActivity}
+        setSelectedActivity={setSelectedActivity}
+      />
     </View>
   );
 };
@@ -42,54 +69,13 @@ const Activity: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: Colors.mainBackground
   },
-  timer: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  stats: {
+  subTitle: {
+    marginTop:20,
+    marginLeft:12,
     fontSize: 18,
-    color: '#666',
-    marginVertical: 8,
-  },
-  activityButtons: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    marginVertical: 16,
-  },
-  button: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 16,
-    margin: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  buttonText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  startButton: {
-    backgroundColor: '#007bff',
-    borderRadius: 10,
-    padding: 16,
-    width: '100%',
-    alignItems: 'center',
-  },
-  startButtonText: {
-    fontSize: 18,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
+    fontWeight: '600',
+  }
 });
 
 export default Activity;

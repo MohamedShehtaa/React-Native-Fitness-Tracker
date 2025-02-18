@@ -1,14 +1,8 @@
+import { Colors } from '@/constants/Colors';
+import Activity from '@/types/Activity';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-interface Activity {
-  id: string;
-  date: string;
-  activity: string;
-  duration: string;
-  distance: string;
-}
 
 const HistoryScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -27,7 +21,6 @@ const HistoryScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Activity History</Text>
 
       {/* Calendar View (Placeholder) */}
       <View style={styles.calendarPlaceholder}>

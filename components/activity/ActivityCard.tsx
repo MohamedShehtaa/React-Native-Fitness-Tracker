@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-interface ActivityCardProps {
+type ActivityCardProps = {
   activity: string;
   duration: string;
   distance: string;

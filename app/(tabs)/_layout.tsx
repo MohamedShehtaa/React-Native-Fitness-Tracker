@@ -8,6 +8,7 @@ import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ScreenHeader from "@/components/ui/ScreenTitle";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,7 +18,6 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-          headerShown: false,
           tabBarButton: HapticTab,
           tabBarBackground: TabBarBackground,
           tabBarStyle: Platform.select({
@@ -36,6 +36,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="house.fill" color={color} />
             ),
+            header: (props) => <ScreenHeader title={props.options.title} />,
           }}
         />
         <Tabs.Screen
@@ -45,6 +46,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="waveform.path.ecg" color={color} />
             ),
+            header: (props) => <ScreenHeader title={props.options.title} />,
           }}
         />
         <Tabs.Screen
@@ -54,6 +56,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="calendar" color={color} />
             ),
+            header: (props) => <ScreenHeader title={props.options.title} />,
           }}
         />
         <Tabs.Screen
@@ -63,6 +66,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="person.circle.fill" color={color} />
             ),
+            header: (props) => <ScreenHeader title={props.options.title} />,
           }}
         />
       </Tabs>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import ProgressCard from '../components/ProgressCard';
-import ActivityCard from '../components/ActivityCard';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import ActivityCard from '../components/activity/ActivityCard';
+import { Colors } from '@/constants/Colors';
 
 const HomeScreen: React.FC = () => {
   return (
