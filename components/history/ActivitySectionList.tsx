@@ -1,19 +1,22 @@
-import React from "react";
-import { View, Text, SectionList, StyleSheet } from "react-native";
-import ActivityListItem from "@/components/history/ActivityListItem";
-import Activity from "@/types/Activity";
-import { Colors } from "@/constants/Colors";
+import React from 'react';
+import { View, Text, SectionList, StyleSheet } from 'react-native';
+import ActivityListItem from '@/components/history/ActivityListItem';
+import Activity from '@/types/Activity';
+import { Colors } from '@/constants/Colors';
 
 type ActivitySectionListProps = {
   activities: Activity[];
 };
 
 const groupActivitiesByDate = (data: Activity[]) => {
-  const grouped = data.reduce((acc, item) => {
-    if (!acc[item.date]) acc[item.date] = [];
-    acc[item.date].push(item);
-    return acc;
-  }, {} as Record<string, Activity[]>);
+  const grouped = data.reduce(
+    (acc, item) => {
+      if (!acc[item.date]) acc[item.date] = [];
+      acc[item.date].push(item);
+      return acc;
+    },
+    {} as Record<string, Activity[]>
+  );
 
   return Object.entries(grouped).map(([date, activities]) => ({
     title: date,
@@ -48,8 +51,8 @@ const styles = StyleSheet.create({
   },
   dateHeader: {
     fontSize: 14,
-    fontWeight: "500",
-    color: "#555",
+    fontWeight: '500',
+    color: '#555',
     backgroundColor: Colors.mainBackground,
     paddingVertical: 8,
     marginBottom: 8,

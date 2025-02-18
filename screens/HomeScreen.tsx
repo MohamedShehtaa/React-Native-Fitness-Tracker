@@ -1,46 +1,48 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
-import ProgressCard from '../components/ProgressCard';
-import ActivityCard from '../components/activity/ActivityCard';
+import { View, ScrollView, StyleSheet, Platform } from 'react-native';
+
 import { Colors } from '@/constants/Colors';
+import CircularProgressBar from '@/components/home/CircularProgressBar';
+import ProgressCards from '@/components/home/ProgressCards';
+import RecentActivities from '@/components/home/RecentActivities';
+import MainCard from '@/components/ui/MainCard';
 
 const HomeScreen: React.FC = () => {
+  const steps = 1000;
+  const goal: number = 10000;
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.progressContainer}>
-        <ProgressCard title="Steps" value="7,543" />
-        <ProgressCard title="Distance" value="2.5km" />
-        <ProgressCard title="Calories" value="284" />
-        <ProgressCard title="Active Time" value="32min" />
-      </View>
-      <View style={styles.activityContainer}>
-        <Text style={styles.sectionTitle}>Recent Activities</Text>
-        <ActivityCard activity="Running" duration="32 min" distance="4.2 km" time="9:30 AM" />
-        <ActivityCard activity="Walking" duration="45 min" distance="2.8 km" time="Yesterday" />
-      </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <MainCard style={styles.mainCard}>
+        <View style={styles.progressContainer}>
+          <CircularProgressBar steps={steps} goal={goal} />
+        </View>
+        <ProgressCards />
+      </MainCard>
+
+      <RecentActivities />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: 16,
     backgroundColor: Colors.mainBackground,
+    alignItems: 'center',
   },
   progressContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
   },
-  activityContainer: {
-    marginTop: 16,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 16,
-    color: '#333',
+  mainCard: {
+    flexBasis: Platform.OS === 'ios' ? '47%' : '55%',
+    paddingVertical: 16,
+    paddingHorizontal: 10,
+    alignItems: 'stretch',
+    marginHorizontal: 0,
+    marginBottom: 28,
   },
 });
 

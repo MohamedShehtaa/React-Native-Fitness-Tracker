@@ -12,11 +12,11 @@ const MAPPING = {
   'house.fill': 'home',
   'person.circle.fill': 'person',
   'waveform.path.ecg': 'show-chart',
-  'calendar': 'date-range',
-  'camera.shutter.button':'add-a-photo',
-  'play.circle.fill':'play-circle',
-  'stop.circle.fill':'stop-circle',
-  'pause.circle.fill':'pause-circle'
+  calendar: 'date-range',
+  'camera.shutter.button': 'add-a-photo',
+  'play.circle.fill': 'play-circle',
+  'stop.circle.fill': 'stop-circle',
+  'pause.circle.fill': 'pause-circle',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
@@ -34,7 +34,7 @@ export type IconSymbolName = keyof typeof MAPPING;
 export function IconSymbol({
   name,
   size = 24,
-  color='',
+  color = '',
   style,
 }: {
   name: IconSymbolName;
@@ -43,5 +43,12 @@ export function IconSymbol({
   style?: StyleProp<TextStyle>;
   weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  return (
+    <MaterialIcons
+      color={color}
+      size={size}
+      name={MAPPING[name]}
+      style={style}
+    />
+  );
 }

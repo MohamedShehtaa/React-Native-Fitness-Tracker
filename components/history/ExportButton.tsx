@@ -8,7 +8,10 @@ type ExportButtonProps = {
 
 const ExportButton: React.FC<ExportButtonProps> = ({ label, onPress }) => {
   return (
-    <TouchableOpacity style={[styles.button, styles.exportButton]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, styles.exportButton]}
+      onPress={onPress}
+    >
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
   );

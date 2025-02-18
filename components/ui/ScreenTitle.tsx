@@ -3,9 +3,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Platform, useColorScheme } from 'react-native';
 
 type ScreenHeaderProps = {
-    title?: string
-}
-const ScreenHeader: React.FC<ScreenHeaderProps> = ({title}) => {
+  title?: string;
+};
+const ScreenHeader: React.FC<ScreenHeaderProps> = ({ title }) => {
   const colorScheme = useColorScheme();
 
   return (
@@ -13,7 +13,10 @@ const ScreenHeader: React.FC<ScreenHeaderProps> = ({title}) => {
       style={[
         styles.header,
         {
-          backgroundColor: colorScheme === 'light'? Colors.mainBackground : Colors['dark'].background,
+          backgroundColor:
+            colorScheme === 'light'
+              ? Colors.mainBackground
+              : Colors['dark'].background,
         },
       ]}
     >
@@ -25,7 +28,7 @@ const ScreenHeader: React.FC<ScreenHeaderProps> = ({title}) => {
           },
         ]}
       >
-       {title}
+        {title}
       </Text>
     </View>
   );
@@ -33,9 +36,9 @@ const ScreenHeader: React.FC<ScreenHeaderProps> = ({title}) => {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop:Platform.OS === 'ios' ? 30 : 20,
-    marginBottom:10,
-    marginLeft:12,
+    marginTop: Platform.OS === 'ios' ? 30 : 20,
+    marginBottom: 10,
+    marginLeft: 12,
   },
   headerText: {
     fontSize: 20,

@@ -18,10 +18,16 @@ const useExport = () => {
 
   const exportCsv = async (activities: Activity[]) => {
     const csvString = activities
-      .map((activity) => `${activity.date},${activity.activity},${activity.duration},${activity.distance}`)
+      .map(
+        (activity) =>
+          `${activity.date},${activity.activity},${activity.duration},${activity.distance}`
+      )
       .join('\n');
     const fileUri = FileSystem.documentDirectory + 'activities.csv';
-    await FileSystem.writeAsStringAsync(fileUri, `Date,Activity,Duration,Distance\n${csvString}`);
+    await FileSystem.writeAsStringAsync(
+      fileUri,
+      `Date,Activity,Duration,Distance\n${csvString}`
+    );
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
       await Sharing.shareAsync(fileUri);
     } else {

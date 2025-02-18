@@ -1,10 +1,10 @@
-import ActivityButtons from "@/components/activity/ActivityButtons";
-import ActivityControlButtons from "@/components/activity/ActivityControlButtons";
-import ActivityStats from "@/components/activity/ActivityStats";
-import ActivityTimer from "@/components/activity/ActivityTimer";
-import MainCard from "@/components/ui/MainCard";
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import ActivityButtons from '@/components/activity/ActivityButtons';
+import ActivityControlButtons from '@/components/activity/ActivityControlButtons';
+import ActivityStats from '@/components/activity/ActivityStats';
+import ActivityTimer from '@/components/activity/ActivityTimer';
+import MainCard from '@/components/ui/MainCard';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
 const Activity: React.FC = () => {
   const [timeElapsed, setTimeElapsed] = useState<number>(0);
@@ -22,7 +22,7 @@ const Activity: React.FC = () => {
 
   const startActivity = () => {
     if (!selectedActivity) {
-      alert("Please select an activity type!");
+      alert('Please select an activity type!');
       return;
     }
     setIsActive(true);
@@ -56,7 +56,7 @@ const Activity: React.FC = () => {
         />
         <ActivityStats steps={steps} calories={calories} />
       </MainCard>
-       <Text style={styles.subTitle}>Choose Activity</Text>
+      <Text style={styles.subTitle}>Choose Activity</Text>
       <ActivityButtons
         selectedActivity={selectedActivity}
         setSelectedActivity={setSelectedActivity}
@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subTitle: {
-    marginTop:20,
-    marginLeft:12,
+    marginTop: 20,
+    marginLeft: 12,
     fontSize: 18,
     fontWeight: '600',
-  }
+  },
 });
 
 export default Activity;

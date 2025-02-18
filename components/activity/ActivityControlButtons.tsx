@@ -1,6 +1,6 @@
-import React from "react";
-import { TouchableOpacity,View, StyleSheet } from "react-native";
-import { IconSymbol } from "../ui/IconSymbol";
+import React from 'react';
+import { TouchableOpacity, View, StyleSheet } from 'react-native';
+import { IconSymbol } from '../ui/IconSymbol';
 
 type ActivityControlButtonsProps = {
   isActive: boolean;
@@ -34,35 +34,34 @@ const ActivityControlButtons: React.FC<ActivityControlButtonsProps> = ({
 };
 const styles = StyleSheet.create({
   controlButtons: {
-    flexDirection: "row",
-    justifyContent:'space-around',
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
     marginVertical: 24,
   },
   startButton: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   pauseButton: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   stopButton: {
-    alignItems: "center",
-
+    alignItems: 'center',
   },
   startButtonText: {
     fontSize: 18,
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
   },
   pauseButtonText: {
     fontSize: 18,
-    color: "#000",
-    fontWeight: "bold",
+    color: '#000',
+    fontWeight: 'bold',
   },
   stopButtonText: {
     fontSize: 18,
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 

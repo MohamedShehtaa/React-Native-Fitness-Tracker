@@ -6,13 +6,20 @@ type ActivityCardProps = {
   duration: string;
   distance: string;
   time: string;
-}
+};
 
-const ActivityCard: React.FC<ActivityCardProps> = ({ activity, duration, distance, time }) => {
+const ActivityCard: React.FC<ActivityCardProps> = ({
+  activity,
+  duration,
+  distance,
+  time,
+}) => {
   return (
     <View style={styles.card}>
       <Text style={styles.activity}>{activity}</Text>
-      <Text style={styles.details}>{duration} - {distance}</Text>
+      <Text style={styles.details}>
+        {duration} - {distance}
+      </Text>
       <Text style={styles.time}>{time}</Text>
     </View>
   );

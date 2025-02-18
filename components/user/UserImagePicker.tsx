@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
-import * as ImagePicker from "expo-image-picker";
-import { IconSymbol } from "../ui/IconSymbol";
+import React, { useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import { IconSymbol } from '../ui/IconSymbol';
 
 type UserImagePickerProps = {
-    setProfileImage: (image: string| null) => void;
-}
+  setProfileImage: (image: string | null) => void;
+};
 
-const UserImagePicker: React.FC<UserImagePickerProps> = ({ setProfileImage }) => {
-
+const UserImagePicker: React.FC<UserImagePickerProps> = ({
+  setProfileImage,
+}) => {
   const [userImage, setUserImage] = useState<string | null>(null);
 
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== "granted") {
-      alert("Sorry, we need camera roll permissions to make this work!");
+    if (status !== 'granted') {
+      alert('Sorry, we need camera roll permissions to make this work!');
       return;
     }
 
@@ -26,8 +27,8 @@ const UserImagePicker: React.FC<UserImagePickerProps> = ({ setProfileImage }) =>
     });
 
     if (!result.canceled) {
-       setUserImage(result.assets[0].uri)
-       setProfileImage(result.assets[0].uri);
+      setUserImage(result.assets[0].uri);
+      setProfileImage(result.assets[0].uri);
     }
   };
 
@@ -49,10 +50,10 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: "#eeee",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000",
+    backgroundColor: '#eeee',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   },
   profileImagePlaceholder: {
     fontSize: 16,
-    color: "#666",
+    color: '#666',
   },
 });
 

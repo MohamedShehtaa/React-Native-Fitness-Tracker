@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 type ActivityTimerProps = {
   isActive: boolean;
@@ -44,21 +44,19 @@ const ActivityTimer: React.FC<ActivityTimerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent:'flex-start',
-    alignItems:'center'
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   timer: {
     fontSize: 48,
-    fontWeight: "600",
-    color: "#333",
+    fontWeight: '600',
+    color: '#333',
   },
   elapsedText: {
     fontSize: 13,
     color: '#666',
     marginVertical: 6,
   },
-
-  
 });
 
 export default ActivityTimer;
