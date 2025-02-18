@@ -9,8 +9,8 @@ interface ProgressCardProps {
 const ProgressCard: React.FC<ProgressCardProps> = ({ title, value }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
       <Text style={styles.value}>{value}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 };
@@ -29,12 +29,13 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    fontSize: 16,
+    marginTop:8,
+    fontSize: 14,
     color: '#666',
   },
   value: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '600',
     color: '#333',
   },
 });
