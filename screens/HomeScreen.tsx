@@ -1,11 +1,11 @@
-import React from "react";
-import { View, ScrollView, StyleSheet, Platform } from "react-native";
+import React from 'react';
+import { View, ScrollView, StyleSheet, Platform } from 'react-native';
 
-import { Colors } from "@/constants/Colors";
-import CircularProgressBar from "@/components/home/CircularProgressBar";
-import ProgressCards from "@/components/home/ProgressCards";
-import RecentActivities from "@/components/home/RecentActivities";
-import MainCard from "@/components/ui/MainCard";
+import { Colors } from '@/constants/Colors';
+import CircularProgressBar from '@/components/home/CircularProgressBar';
+import ProgressCards from '@/components/home/ProgressCards';
+import RecentActivities from '@/components/home/RecentActivities';
+import MainCard from '@/components/ui/MainCard';
 
 const HomeScreen: React.FC = () => {
   const steps = 1000;
@@ -30,20 +30,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 16,
     backgroundColor: Colors.mainBackground,
-    alignItems: "center",
+    alignItems: 'center',
   },
   progressContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     marginBottom: 20,
   },
   mainCard: {
-    flexBasis: Platform.OS === "ios" ? "47%" : "55%",
-    paddingVertical:16,
-    paddingHorizontal:10,
-    alignItems: "stretch",
+    flexBasis: Platform.OS === 'ios' ? '47%' : '55%',
+    paddingVertical: 16,
+    paddingHorizontal: 10,
+    alignItems: 'stretch',
     marginHorizontal: 0,
-    marginBottom:28,
-  }
+    marginBottom: 28,
+  },
 });
 
 export default HomeScreen;

@@ -3,15 +3,11 @@ import { View, StyleSheet, ViewStyle } from 'react-native';
 
 interface MainCardProps {
   children: ReactNode;
-  style?: ViewStyle; 
+  style?: ViewStyle;
 }
 
 const MainCard: React.FC<MainCardProps> = ({ children, style }) => {
-  return (
-    <View style={[styles.container, style]}>
-      {children}
-    </View>
-  );
+  return <View style={[styles.container, style]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({

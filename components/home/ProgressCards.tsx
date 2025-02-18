@@ -1,6 +1,6 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import ProgressCard from "./ProgressCard";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import ProgressCard from './ProgressCard';
 
 const ProgressCards: React.FC = () => {
   return (
@@ -14,10 +14,10 @@ const ProgressCards: React.FC = () => {
 
 const styles = StyleSheet.create({
   progressCardsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    width: "100%",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
 

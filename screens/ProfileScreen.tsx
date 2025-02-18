@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import UserImagePicker from "@/components/user/UserImagePicker";
-import UserInfo from "@/components/user/UserInfo";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import MainCard from "@/components/ui/MainCard";
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import UserImagePicker from '@/components/user/UserImagePicker';
+import UserInfo from '@/components/user/UserInfo';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import MainCard from '@/components/ui/MainCard';
 
 const ProfileScreen: React.FC = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
@@ -12,7 +12,7 @@ const ProfileScreen: React.FC = () => {
     <View style={styles.container}>
       <MainCard>
         <UserImagePicker setProfileImage={setProfileImage} />
-        <UserInfo user={{ name: "john", email: "test@test.com" }} />
+        <UserInfo user={{ name: 'john', email: 'test@test.com' }} />
       </MainCard>
     </View>
   );
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 16,
-    color: "#333",
+    color: '#333',
   },
 });
 

@@ -8,7 +8,11 @@ export default function AppLoading() {
         source={require('../../assets/images/fitness.png')}
         style={styles.image}
       />
-      <ActivityIndicator size="large" color="#0000ff" style={styles.activityIndicator} />
+      <ActivityIndicator
+        size="large"
+        color="#0000ff"
+        style={styles.activityIndicator}
+      />
     </View>
   );
 }

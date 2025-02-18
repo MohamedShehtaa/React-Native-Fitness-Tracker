@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Activity from "@/types/Activity";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Activity from '@/types/Activity';
 
 type ActivityListItemProps = {
   item: Activity;
@@ -19,12 +19,12 @@ const ActivityListItem: React.FC<ActivityListItemProps> = ({ item }) => {
 
 const styles = StyleSheet.create({
   activityItem: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 10,
     padding: 16,
     marginHorizontal: 8,
     marginBottom: 8,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   },
   activityText: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
   },
   activityDetails: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
   },
 });
 

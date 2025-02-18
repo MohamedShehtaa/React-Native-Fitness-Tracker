@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    marginTop:8,
+    marginTop: 8,
     fontSize: 14,
     color: '#666',
   },

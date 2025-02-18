@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-import User from "@/types/User";
+import User from '@/types/User';
 
 interface UserInfoProps {
   user: User;
@@ -18,18 +18,18 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
 
 const styles = StyleSheet.create({
   userInfo: {
-    alignItems:'center'
+    alignItems: 'center',
   },
   userName: {
     fontSize: 18,
-    fontWeight:'700',
-    color: "#333",
+    fontWeight: '700',
+    color: '#333',
     marginBottom: 8,
   },
   userEmail: {
     fontSize: 14,
-    fontWeight:'400',
-    color: "#333",
+    fontWeight: '400',
+    color: '#333',
     marginBottom: 8,
   },
 });

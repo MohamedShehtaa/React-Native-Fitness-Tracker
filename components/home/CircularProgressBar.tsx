@@ -1,13 +1,16 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Svg, { Circle } from "react-native-svg";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 
 interface CircularProgressBarProps {
   steps: number;
   goal: number;
 }
 
-const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ steps, goal }) => {
+const CircularProgressBar: React.FC<CircularProgressBarProps> = ({
+  steps,
+  goal,
+}) => {
   const progress = (steps / goal) * 100;
   const strokeWidth = 10;
   const radius = 60;
@@ -15,7 +18,7 @@ const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ steps, goal }
   const progressOffset = circumference - (progress / 100) * circumference;
 
   // Dynamic progress color
-  const progressColor = progress >= 50 ? "#4CAF50" : "#007bff";
+  const progressColor = progress >= 50 ? '#4CAF50' : '#007bff';
 
   return (
     <View style={styles.circularProgressWrapper}>
@@ -54,28 +57,28 @@ const styles = StyleSheet.create({
   circularProgressWrapper: {
     width: 150,
     height: 150,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
   },
   innerCircle: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
     width: 120,
     height: 120,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     transform: [{ translateX: -60 }, { translateY: -60 }],
   },
   stepCount: {
     fontSize: 24,
-    fontWeight: "400",
-    color: "#333",
+    fontWeight: '400',
+    color: '#333',
   },
   stepLabel: {
     fontSize: 16,
-    color: "#333",
+    color: '#333',
   },
 });
 

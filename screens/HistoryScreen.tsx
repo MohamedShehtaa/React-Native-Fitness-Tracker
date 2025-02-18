@@ -1,49 +1,49 @@
-import React, { useState } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
-import CustomCalendar from "@/components/history/CustomCalendar";
-import ExportButton from "@/components/history/ExportButton";
-import ClearFilterButton from "@/components/history/ClearFilterButton";
-import ActivitySectionList from "@/components/history/ActivitySectionList";
-import { Colors } from "@/constants/Colors";
-import useExport from "@/hooks/useExport";
-import { DateData } from "react-native-calendars";
-import Activity from "@/types/Activity";
+import React, { useState } from 'react';
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import CustomCalendar from '@/components/history/CustomCalendar';
+import ExportButton from '@/components/history/ExportButton';
+import ClearFilterButton from '@/components/history/ClearFilterButton';
+import ActivitySectionList from '@/components/history/ActivitySectionList';
+import { Colors } from '@/constants/Colors';
+import useExport from '@/hooks/useExport';
+import { DateData } from 'react-native-calendars';
+import Activity from '@/types/Activity';
 
 const activities: Activity[] = [
   {
-    id: "1",
-    date: "2023-10-01",
-    activity: "Running",
-    duration: "32 min",
-    distance: "4.2 km",
+    id: '1',
+    date: '2023-10-01',
+    activity: 'Running',
+    duration: '32 min',
+    distance: '4.2 km',
   },
   {
-    id: "2",
-    date: "2023-10-01",
-    activity: "Walking",
-    duration: "45 min",
-    distance: "2.8 km",
+    id: '2',
+    date: '2023-10-01',
+    activity: 'Walking',
+    duration: '45 min',
+    distance: '2.8 km',
   },
   {
-    id: "3",
-    date: "2023-10-02",
-    activity: "Cycling",
-    duration: "40 min",
-    distance: "8.5 km",
+    id: '3',
+    date: '2023-10-02',
+    activity: 'Cycling',
+    duration: '40 min',
+    distance: '8.5 km',
   },
   {
-    id: "4",
-    date: "2023-10-02",
-    activity: "Gym",
-    duration: "50 min",
-    distance: "N/A",
+    id: '4',
+    date: '2023-10-02',
+    activity: 'Gym',
+    duration: '50 min',
+    distance: 'N/A',
   },
   {
-    id: "5",
-    date: "2023-10-03",
-    activity: "Swimming",
-    duration: "30 min",
-    distance: "N/A",
+    id: '5',
+    date: '2023-10-03',
+    activity: 'Swimming',
+    duration: '30 min',
+    distance: 'N/A',
   },
 ];
 
@@ -61,7 +61,7 @@ const HistoryScreen: React.FC = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={styles.container}
     >
       <CustomCalendar
@@ -99,11 +99,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 10,
-    paddingBottom: Platform.OS === "ios" ? 40 : 0,
-    marginBottom: Platform.OS === "ios" ? 60 : 0,
+    paddingBottom: Platform.OS === 'ios' ? 40 : 0,
+    marginBottom: Platform.OS === 'ios' ? 60 : 0,
   },
 });
 

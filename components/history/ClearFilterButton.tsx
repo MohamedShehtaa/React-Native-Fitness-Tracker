@@ -1,5 +1,5 @@
-import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 type ClearFilterButtonProps = {
   onPress: () => void;
@@ -21,16 +21,16 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 8,
     padding: 12,
-    alignItems: "center",
+    alignItems: 'center',
     marginHorizontal: 4,
   },
   filterButton: {
-    backgroundColor: "#dc3545",
+    backgroundColor: '#dc3545',
   },
   buttonText: {
     fontSize: 14,
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 

@@ -1,7 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import ActivityCard from "../activity/ActivityCard";
-
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import ActivityCard from '../activity/ActivityCard';
 
 const RecentActivities: React.FC = () => {
   return (
@@ -26,15 +25,15 @@ const RecentActivities: React.FC = () => {
 const styles = StyleSheet.create({
   activityContainer: {
     marginTop: 16,
-    width: "100%",
+    width: '100%',
   },
   sectionTitle: {
-    alignSelf:'flex-start',
+    alignSelf: 'flex-start',
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 16,
-    color: "#333",
-    textAlign: "center",
+    color: '#333',
+    textAlign: 'center',
   },
 });
 
