@@ -5,7 +5,6 @@ import ActivityTimer from "@/components/activity/ActivityTimer";
 import MainCard from "@/components/ui/MainCard";
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const Activity: React.FC = () => {
   const [timeElapsed, setTimeElapsed] = useState<number>(0);
@@ -19,7 +18,7 @@ const Activity: React.FC = () => {
       setSteps((prevSteps) => prevSteps + 1);
       setCalories((prevCalories) => prevCalories + 0.1);
     }
-  }, [timeElapsed]);
+  }, [isActive, timeElapsed]);
 
   const startActivity = () => {
     if (!selectedActivity) {

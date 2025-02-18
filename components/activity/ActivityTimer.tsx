@@ -32,7 +32,7 @@ const ActivityTimer: React.FC<ActivityTimerProps> = ({
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isActive]);
+  }, [isActive, setTimeElapsed]);
 
   return (
     <View style={styles.container}>
