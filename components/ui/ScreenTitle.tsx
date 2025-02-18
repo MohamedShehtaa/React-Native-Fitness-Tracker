@@ -34,7 +34,7 @@ const ScreenHeader: React.FC<ScreenHeaderProps> = ({title}) => {
 const styles = StyleSheet.create({
   header: {
     marginTop:Platform.OS === 'ios' ? 30 : 20,
-    marginBottom:20,
+    marginBottom:10,
     marginLeft:12,
   },
   headerText: {
