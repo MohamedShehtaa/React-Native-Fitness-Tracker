@@ -13,7 +13,10 @@ const MAPPING = {
   'person.circle.fill': 'person',
   'waveform.path.ecg': 'show-chart',
   'calendar': 'date-range',
-  'camera.shutter.button':'add-a-photo'
+  'camera.shutter.button':'add-a-photo',
+  'play.circle.fill':'play-circle',
+  'stop.circle.fill':'stop-circle',
+  'pause.circle.fill':'pause-circle'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
