@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Activity from '@/types/Activity';
+import { Activity } from '@/types';
 
 type ActivityListItemProps = {
   item: Activity;
@@ -9,7 +9,7 @@ type ActivityListItemProps = {
 const ActivityListItem: React.FC<ActivityListItemProps> = ({ item }) => {
   return (
     <View style={styles.activityItem}>
-      <Text style={styles.activityText}>{item.activity}</Text>
+      <Text style={styles.activityText}>{item.name}</Text>
       <Text style={styles.activityDetails}>
         {item.duration} - {item.distance}
       </Text>

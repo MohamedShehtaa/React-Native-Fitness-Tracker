@@ -2,7 +2,7 @@ import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Alert } from 'react-native';
 import { Platform } from 'react-native';
-import Activity from '@/types/Activity';
+import { Activity } from '@/types';
 
 const useExport = () => {
   const exportJson = async (activities: Activity[]) => {
@@ -20,7 +20,7 @@ const useExport = () => {
     const csvString = activities
       .map(
         (activity) =>
-          `${activity.date},${activity.activity},${activity.duration},${activity.distance}`
+          `${activity.date},${activity.name},${activity.duration},${activity.distance}`
       )
       .join('\n');
     const fileUri = FileSystem.documentDirectory + 'activities.csv';

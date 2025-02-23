@@ -7,7 +7,7 @@ import ActivitySectionList from '@/components/history/ActivitySectionList';
 import { Colors } from '@/constants/Colors';
 import useExport from '@/hooks/useExport';
 import { DateData } from 'react-native-calendars';
-import Activity from '@/types/Activity';
+import { Activity } from '@/types';
 
 const activities: Activity[] = [
   {

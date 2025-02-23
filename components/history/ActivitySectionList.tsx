@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SectionList, StyleSheet } from 'react-native';
 import ActivityListItem from '@/components/history/ActivityListItem';
-import Activity from '@/types/Activity';
+import { Activity } from '@/types';
 import { Colors } from '@/constants/Colors';
 
 type ActivitySectionListProps = {
