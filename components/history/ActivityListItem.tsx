@@ -11,7 +11,7 @@ const ActivityListItem: React.FC<ActivityListItemProps> = ({ item }) => {
     <View style={styles.activityItem}>
       <Text style={styles.activityText}>{item.name}</Text>
       <Text style={styles.activityDetails}>
-        {item.duration} - {item.distance}
+        {`${item.duration} min - ${item.distance} km`}
       </Text>
     </View>
   );

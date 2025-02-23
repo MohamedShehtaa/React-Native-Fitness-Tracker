@@ -5,7 +5,6 @@ export interface Activity {
   duration: number;
   calories: number;
   createdAt: string;
-  date: string;
 }
 
 export interface User {

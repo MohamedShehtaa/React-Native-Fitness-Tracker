@@ -14,10 +14,12 @@ export const storeImage = async (uri: string): Promise<string> => {
     const filename = generateUniqueName(uri);
     const permanentPath = `${FileSystem.documentDirectory}${filename}`;
 
-    await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory!, { intermediates: true });
+    await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory!, {
+      intermediates: true,
+    });
     await FileSystem.copyAsync({
       from: uri,
-      to: permanentPath
+      to: permanentPath,
     });
 
     const fileInfo = await FileSystem.getInfoAsync(permanentPath);

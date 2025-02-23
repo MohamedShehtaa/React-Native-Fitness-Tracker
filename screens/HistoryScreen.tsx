@@ -7,52 +7,18 @@ import ActivitySectionList from '@/components/history/ActivitySectionList';
 import { Colors } from '@/constants/Colors';
 import useExport from '@/hooks/useExport';
 import { DateData } from 'react-native-calendars';
-import { Activity } from '@/types';
-
-const activities: Activity[] = [
-  {
-    id: '1',
-    date: '2023-10-01',
-    activity: 'Running',
-    duration: '32 min',
-    distance: '4.2 km',
-  },
-  {
-    id: '2',
-    date: '2023-10-01',
-    activity: 'Walking',
-    duration: '45 min',
-    distance: '2.8 km',
-  },
-  {
-    id: '3',
-    date: '2023-10-02',
-    activity: 'Cycling',
-    duration: '40 min',
-    distance: '8.5 km',
-  },
-  {
-    id: '4',
-    date: '2023-10-02',
-    activity: 'Gym',
-    duration: '50 min',
-    distance: 'N/A',
-  },
-  {
-    id: '5',
-    date: '2023-10-03',
-    activity: 'Swimming',
-    duration: '30 min',
-    distance: 'N/A',
-  },
-];
+import { useAppSelector } from '@/redux/store';
+import { selectActivities } from '@/redux/features/activities/activitiesSlice';
+import { formatDate } from '@/util/groupActivitiesByDate';
 
 const HistoryScreen: React.FC = () => {
+  const activities = useAppSelector(selectActivities);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const { exportJson, exportCsv } = useExport();
-
   const filteredActivities = selectedDate
-    ? activities.filter((activity) => activity.date === selectedDate)
+    ? activities.filter(
+        (activity) => formatDate(activity.createdAt) === selectedDate
+      )
     : activities;
 
   const handleDayPress = (day: DateData) => {

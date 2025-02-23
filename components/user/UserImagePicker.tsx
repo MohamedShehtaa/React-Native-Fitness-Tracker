@@ -15,9 +15,13 @@ const UserImagePicker: React.FC<UserImagePickerProps> = ({ profileImage }) => {
 
   const pickImage = async () => {
     try {
-      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== 'granted') {
-        Alert.alert('Permission required', 'We need camera roll access to upload images');
+        Alert.alert(
+          'Permission required',
+          'We need camera roll access to upload images'
+        );
         return;
       }
 
@@ -42,10 +46,10 @@ const UserImagePicker: React.FC<UserImagePickerProps> = ({ profileImage }) => {
     <TouchableOpacity onPress={pickImage}>
       <View style={styles.profileImageContainer}>
         {profileImage ? (
-          <Image 
-            source={{ uri: profileImage }} 
-            style={styles.profileImage} 
-            onError={() => console.log("Error loading image")}
+          <Image
+            source={{ uri: profileImage }}
+            style={styles.profileImage}
+            onError={() => console.log('Error loading image')}
           />
         ) : (
           <IconSymbol name="camera.shutter.button" size={36} />
