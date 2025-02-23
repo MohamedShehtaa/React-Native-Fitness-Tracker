@@ -1,13 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { IconSymbol } from '../ui/IconSymbol';
+import { ActivityType } from '@/types';
 
 type ActivityButtonsProps = {
   selectedActivity: string | null;
   setSelectedActivity: (activity: string) => void;
 };
 
-const activities = ['Running', 'Walking', 'Cycling', 'Gym'];
+const activitiesLabels: string[] = Object.values(ActivityType)
 
 const ActivityButtons: React.FC<ActivityButtonsProps> = ({
   selectedActivity,
@@ -15,18 +16,18 @@ const ActivityButtons: React.FC<ActivityButtonsProps> = ({
 }) => {
   return (
     <View style={styles.activityButtons}>
-      {activities.map((activity) => (
+      {activitiesLabels.map((activity) => (
         <TouchableOpacity
           key={activity}
           style={[
             styles.button,
-            selectedActivity === activity && styles.selectedButton,
+            selectedActivity === activity.toLowerCase() && styles.selectedButton,
           ]}
-          onPress={() => setSelectedActivity(activity)}
+          onPress={() => setSelectedActivity(activity.toLowerCase())}
         >
           <IconSymbol
             name="waveform.path.ecg"
-            color={selectedActivity === activity ? '#fff' : '#007bff'}
+            color={selectedActivity === activity.toLowerCase() ? '#fff' : '#007bff'}
           />
           <Text style={styles.buttonText}>{activity}</Text>
         </TouchableOpacity>

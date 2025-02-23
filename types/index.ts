@@ -29,3 +29,10 @@ export interface RootState {
   };
   fitnessMetrics: FitnessMetrics;
 }
+
+export enum ActivityType {
+  Running = 'Running',
+  Walking = 'Walking',
+  Cycling = 'Cycling',
+  Gym = 'Gym',
+}
