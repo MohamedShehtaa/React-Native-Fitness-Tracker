@@ -3,6 +3,8 @@ import ActivityControlButtons from '@/components/activity/ActivityControlButtons
 import ActivityStats from '@/components/activity/ActivityStats';
 import ActivityTimer from '@/components/activity/ActivityTimer';
 import MainCard from '@/components/ui/MainCard';
+import { addActivity } from '@/redux/features/activities/activitiesSlice';
+import { useAppDispatch } from '@/redux/store';
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
@@ -11,7 +13,8 @@ const Activity: React.FC = () => {
   const [steps, setSteps] = useState<number>(0);
   const [calories, setCalories] = useState<number>(0);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
+  const [selectedActivity, setSelectedActivity] = useState<string>('');
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isActive) {
@@ -37,7 +40,17 @@ const Activity: React.FC = () => {
     setTimeElapsed(0);
     setSteps(0);
     setCalories(0);
-    setSelectedActivity(null);
+    setSelectedActivity('');
+    if (selectedActivity) {
+      dispatch(
+        addActivity({
+          name: selectedActivity,
+          calories: 4000,
+          distance: 2,
+          duration: 45,
+        })
+      );
+    }
   };
 
   return (

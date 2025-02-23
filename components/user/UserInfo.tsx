@@ -1,17 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import User from '@/types/User';
-
 interface UserInfoProps {
-  user: User;
+  name: string;
+  email: string;
 }
 
-const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
+const UserInfo: React.FC<UserInfoProps> = ({ name, email }) => {
   return (
     <View style={styles.userInfo}>
-      <Text style={styles.userName}>{user.name}</Text>
-      <Text style={styles.userEmail}>{user.email}</Text>
+      <Text style={styles.userName}>{name}</Text>
+      <Text style={styles.userEmail}>{email}</Text>
     </View>
   );
 };

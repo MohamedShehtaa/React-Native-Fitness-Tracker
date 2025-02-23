@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 
 import { Colors } from '@/constants/Colors';
 import CircularProgressBar from '@/components/home/CircularProgressBar';
@@ -12,7 +12,7 @@ const HomeScreen: React.FC = () => {
   const goal: number = 10000;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <MainCard style={styles.mainCard}>
         <View style={styles.progressContainer}>
           <CircularProgressBar steps={steps} goal={goal} />
@@ -21,7 +21,7 @@ const HomeScreen: React.FC = () => {
       </MainCard>
 
       <RecentActivities />
-    </ScrollView>
+    </View>
   );
 };
 

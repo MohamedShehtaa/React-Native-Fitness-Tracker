@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import UserImagePicker from '@/components/user/UserImagePicker';
 import UserInfo from '@/components/user/UserInfo';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import MainCard from '@/components/ui/MainCard';
+import { useAppSelector } from '@/redux/store';
+import { selectUserProfile } from '@/redux/features/user/userSlice';
 
 const ProfileScreen: React.FC = () => {
-  const [profileImage, setProfileImage] = useState<string | null>(null);
-  console.log(profileImage);
+  const user = useAppSelector(selectUserProfile);
+
   return (
     <View style={styles.container}>
       <MainCard>
-        <UserImagePicker setProfileImage={setProfileImage} />
-        <UserInfo user={{ name: 'john', email: 'test@test.com' }} />
+        <UserImagePicker profileImage={user.profileImage} />
+        <UserInfo name={user.name} email={user.email} />
       </MainCard>
     </View>
   );

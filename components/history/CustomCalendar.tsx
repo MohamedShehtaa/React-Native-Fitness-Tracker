@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, DateData } from 'react-native-calendars';
-import Activity from '../../types/Activity';
+import { Activity } from '@/types';
 import MainCard from '../ui/MainCard';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -17,7 +17,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
 }) => {
   const markedDates = activities.reduce(
     (acc, activity) => {
-      acc[activity.date] = { marked: true, dotColor: '#007bff' };
+      acc[activity.createdAt] = { marked: true, dotColor: '#007bff' };
       return acc;
     },
     {} as { [key: string]: { marked: boolean; dotColor: string } }

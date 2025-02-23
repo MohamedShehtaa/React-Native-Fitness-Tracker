@@ -1,22 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import ActivityCard from '../activity/ActivityCard';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { useAppSelector } from '@/redux/store';
+import { selectRecentActivities } from '@/redux/features/activities/activitiesSlice';
+import ActivityListItem from '../history/ActivityListItem';
+import EmptyList from '../ui/EmptyList';
 
 const RecentActivities: React.FC = () => {
+  const recentActivities = useAppSelector(selectRecentActivities);
+
   return (
     <View style={styles.activityContainer}>
       <Text style={styles.sectionTitle}>Recent Activities</Text>
-      <ActivityCard
-        activity="Running"
-        duration="32 min"
-        distance="4.2 km"
-        time="9:30 AM"
-      />
-      <ActivityCard
-        activity="Walking"
-        duration="45 min"
-        distance="2.8 km"
-        time="Yesterday"
+      <FlatList
+        data={recentActivities}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <ActivityListItem item={item} />}
+        ListEmptyComponent={<EmptyList message="No Activities to Show" />}
       />
     </View>
   );
@@ -26,14 +25,14 @@ const styles = StyleSheet.create({
   activityContainer: {
     marginTop: 16,
     width: '100%',
+    paddingHorizontal: 8,
   },
   sectionTitle: {
-    alignSelf: 'flex-start',
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 16,
     color: '#333',
-    textAlign: 'center',
+    textAlign: 'left',
   },
 });
 

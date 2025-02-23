@@ -1,27 +1,13 @@
 import React from 'react';
 import { View, Text, SectionList, StyleSheet } from 'react-native';
 import ActivityListItem from '@/components/history/ActivityListItem';
-import Activity from '@/types/Activity';
+import { Activity } from '@/types';
 import { Colors } from '@/constants/Colors';
+import groupActivitiesByDate from '@/util/groupActivitiesByDate';
+import EmptyList from '../ui/EmptyList';
 
 type ActivitySectionListProps = {
   activities: Activity[];
-};
-
-const groupActivitiesByDate = (data: Activity[]) => {
-  const grouped = data.reduce(
-    (acc, item) => {
-      if (!acc[item.date]) acc[item.date] = [];
-      acc[item.date].push(item);
-      return acc;
-    },
-    {} as Record<string, Activity[]>
-  );
-
-  return Object.entries(grouped).map(([date, activities]) => ({
-    title: date,
-    data: activities,
-  }));
 };
 
 const ActivitySectionList: React.FC<ActivitySectionListProps> = ({
@@ -39,6 +25,7 @@ const ActivitySectionList: React.FC<ActivitySectionListProps> = ({
         )}
         renderItem={({ item }) => <ActivityListItem item={item} />}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={<EmptyList message="No Activities" />}
       />
     </View>
   );
