@@ -5,6 +5,7 @@ export interface Activity {
   duration: number;
   calories: number;
   createdAt: string;
+  steps?:number;
 }
 
 export interface User {
@@ -36,3 +37,24 @@ export enum ActivityType {
   Cycling = 'Cycling',
   Gym = 'Gym',
 }
+
+type BaseCoefficients = {
+  stepThreshold: number;
+};
+
+export type StepBasedCoefficients = BaseCoefficients & {
+  caloriesPerStep: number;
+  distancePerStep: number;
+};
+
+export type TimeBasedCoefficients = BaseCoefficients & {
+  caloriesPerSecond: number;
+  distancePerSecond?: number;
+};
+
+export type ActivityCoefficients = {
+  [ActivityType.Running]: StepBasedCoefficients;
+  [ActivityType.Walking]: StepBasedCoefficients;
+  [ActivityType.Cycling]: TimeBasedCoefficients;
+  [ActivityType.Gym]: Omit<TimeBasedCoefficients, 'distancePerSecond'>;
+};

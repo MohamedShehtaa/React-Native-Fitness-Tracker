@@ -20,7 +20,7 @@ const useExport = () => {
     const csvString = activities
       .map(
         (activity) =>
-          `${activity.date},${activity.name},${activity.duration},${activity.distance}`
+          `${activity.createdAt},${activity.name},${activity.duration},${activity.distance}`
       )
       .join('\n');
     const fileUri = FileSystem.documentDirectory + 'activities.csv';

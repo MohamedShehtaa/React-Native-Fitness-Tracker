@@ -36,6 +36,12 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Allow Fitness Track App To Access Your Motion Sensors"
+        }
       ]
     ],
     "experiments": {

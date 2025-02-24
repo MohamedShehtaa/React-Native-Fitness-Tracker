@@ -18,10 +18,11 @@ const ProgressCard: React.FC<ProgressCardProps> = ({ title, value }) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    borderRadius: 10,
+    borderRadius: 8,
     padding: 16,
     margin: 8,
     alignItems: 'center',
+    justifyContent:'space-between',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -30,11 +31,11 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: 8,
-    fontSize: 14,
+    fontSize: 12,
     color: '#666',
   },
   value: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: '600',
     color: '#333',
   },
