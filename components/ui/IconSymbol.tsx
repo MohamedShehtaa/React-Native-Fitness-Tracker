@@ -15,10 +15,10 @@ const MAPPING = {
   'play.circle.fill': 'play-circle',
   'stop.circle.fill': 'stop-circle',
   'pause.circle.fill': 'pause-circle',
-  'figure.run': 'directions-run',  
-  'figure.walk': 'directions-walk',   
-  'bicycle': 'directions-bike',       
-  'dumbbell': 'fitness-center',        
+  'figure.run': 'directions-run',
+  'figure.walk': 'directions-walk',
+  bicycle: 'directions-bike',
+  dumbbell: 'fitness-center',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

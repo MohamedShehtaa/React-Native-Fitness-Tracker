@@ -18,7 +18,8 @@ const metricsSlice = createSlice({
         if (action.payload.steps) state.steps += action.payload.steps;
         if (action.payload.calories) state.calories += action.payload.calories;
         if (action.payload.distance) state.distance += action.payload.distance;
-        if (action.payload.activeTime) state.activeTime += action.payload.activeTime;
+        if (action.payload.activeTime)
+          state.activeTime += action.payload.activeTime;
         state.lastUpdated = new Date().toISOString();
       },
       prepare: (metrics: Partial<FitnessMetrics>) => ({
@@ -27,7 +28,7 @@ const metricsSlice = createSlice({
     },
     resetMetrics: (state) => {
       Object.assign(state, initialState);
-    }
+    },
   },
 });
 

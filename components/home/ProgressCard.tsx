@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     padding: 16,
     margin: 8,
     alignItems: 'center',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,

@@ -8,12 +8,16 @@ type ActivityStatsProps = {
   distance: number;
 };
 
-const ActivityStats: React.FC<ActivityStatsProps> = ({ steps, calories, distance }) => {
+const ActivityStats: React.FC<ActivityStatsProps> = ({
+  steps,
+  calories,
+  distance,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.stats}>{steps} Steps</Text>
       <Text style={styles.stats}>{calories.toFixed(1)} Calories</Text>
-      <Text style={styles.stats}>{(distance/1000).toFixed(2)} Distance</Text>
+      <Text style={styles.stats}>{(distance / 1000).toFixed(2)} Distance</Text>
     </View>
   );
 };
@@ -22,7 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginVertical:24,
+    marginVertical: 24,
   },
   stats: {
     backgroundColor: Colors.mainBackground,

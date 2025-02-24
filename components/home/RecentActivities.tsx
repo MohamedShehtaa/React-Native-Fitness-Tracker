@@ -12,10 +12,12 @@ const RecentActivities: React.FC = () => {
     <View style={styles.activityContainer}>
       <Text style={styles.sectionTitle}>Recent Activities</Text>
       <FlatList
+        style={{ maxHeight: 200 }}
         data={recentActivities}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ActivityListItem item={item} />}
         ListEmptyComponent={<EmptyList message="No Activities to Show" />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

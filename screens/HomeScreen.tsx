@@ -18,7 +18,7 @@ const HomeScreen: React.FC = () => {
         <View style={styles.progressContainer}>
           <CircularProgressBar steps={metrics.steps} goal={10000} />
         </View>
-        <ProgressCards metrics = {metrics} />
+        <ProgressCards metrics={metrics} />
       </MainCard>
 
       <RecentActivities />
