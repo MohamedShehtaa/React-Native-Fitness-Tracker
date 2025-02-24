@@ -2,13 +2,12 @@ import React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { IconSymbol } from '../ui/IconSymbol';
 import { ActivityType } from '@/types';
+import { ACTIVITY_ICONS } from '@/constants/ActivityIcons';
 
 type ActivityButtonsProps = {
-  selectedActivity: string | null;
-  setSelectedActivity: (activity: string) => void;
+  selectedActivity: ActivityType | null;
+  setSelectedActivity: (activity: ActivityType) => void;
 };
-
-const activitiesLabels: string[] = Object.values(ActivityType)
 
 const ActivityButtons: React.FC<ActivityButtonsProps> = ({
   selectedActivity,
@@ -16,20 +15,28 @@ const ActivityButtons: React.FC<ActivityButtonsProps> = ({
 }) => {
   return (
     <View style={styles.activityButtons}>
-      {activitiesLabels.map((activity) => (
+      {Object.values(ActivityType).map((activity) => (
         <TouchableOpacity
           key={activity}
           style={[
             styles.button,
-            selectedActivity === activity.toLowerCase() && styles.selectedButton,
+            selectedActivity === activity && styles.selectedButton,
           ]}
-          onPress={() => setSelectedActivity(activity.toLowerCase())}
+          onPress={() => setSelectedActivity(activity)}
         >
           <IconSymbol
-            name="waveform.path.ecg"
-            color={selectedActivity === activity.toLowerCase() ? '#fff' : '#007bff'}
+            name={ACTIVITY_ICONS[activity]}
+            color={selectedActivity === activity ? '#fff' : '#007bff'}
+            size={24}
           />
-          <Text style={styles.buttonText}>{activity}</Text>
+          <Text
+            style={[
+              styles.buttonText,
+              selectedActivity === activity && styles.selectedText,
+            ]}
+          >
+            {activity}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -42,16 +49,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginVertical: 16,
+    paddingHorizontal: 8,
   },
   button: {
-    flexBasis: '45%',
+    width: '48%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 16,
-    margin: 8,
-    marginBottom: 12,
+    marginVertical: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -64,6 +71,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: '#333',
+    marginTop: 8,
+    fontWeight: '500',
+  },
+  selectedText: {
+    color: '#fff',
   },
 });
 

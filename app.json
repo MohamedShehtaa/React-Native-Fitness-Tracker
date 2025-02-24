@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fitness-track",
-    "slug": "fitness-track",
+    "name": "Fitness Tracker",
+    "slug": "fitness-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/fitness.png",
@@ -35,6 +35,12 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Allow Fitness Track App To Access Your Motion Sensors"
         }
       ]
     ],

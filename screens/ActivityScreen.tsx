@@ -4,50 +4,60 @@ import ActivityStats from '@/components/activity/ActivityStats';
 import ActivityTimer from '@/components/activity/ActivityTimer';
 import MainCard from '@/components/ui/MainCard';
 import { addActivity } from '@/redux/features/activities/activitiesSlice';
+import { updateMetrics } from '@/redux/features/metrics/metricsSlice';
 import { useAppDispatch } from '@/redux/store';
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import useActivityTracker from '@/hooks/useActivityTracking';
+import React from 'react';
+import { View, StyleSheet, Text, Alert } from 'react-native';
+import { ActivityType } from '@/types';
 
 const Activity: React.FC = () => {
-  const [timeElapsed, setTimeElapsed] = useState<number>(0);
-  const [steps, setSteps] = useState<number>(0);
-  const [calories, setCalories] = useState<number>(0);
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [selectedActivity, setSelectedActivity] = useState<string>('');
   const dispatch = useAppDispatch();
+  const {
+    timeElapsed,
+    steps,
+    calories,
+    distance,
+    isActive,
+    selectedActivity,
+    setSelectedActivity,
+    setTimeElapsed,
+    startTracking,
+    pauseTracking,
+    stopTracking,
+  } = useActivityTracker();
 
-  useEffect(() => {
-    if (isActive) {
-      setSteps((prevSteps) => prevSteps + 1);
-      setCalories((prevCalories) => prevCalories + 0.1);
+  const handleStart = async () => {
+    try {
+      await startTracking();
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
     }
-  }, [isActive, timeElapsed]);
-
-  const startActivity = () => {
-    if (!selectedActivity) {
-      alert('Please select an activity type!');
-      return;
-    }
-    setIsActive(true);
   };
 
-  const pauseActivity = () => {
-    setIsActive(false);
-  };
+  const handleStop = () => {
+    stopTracking();
 
-  const stopActivity = () => {
-    setIsActive(false);
-    setTimeElapsed(0);
-    setSteps(0);
-    setCalories(0);
-    setSelectedActivity('');
-    if (selectedActivity) {
+    if (selectedActivity && timeElapsed > 0) {
+      const activityMetrics = {
+        steps: [ActivityType.Running, ActivityType.Walking].includes(
+          selectedActivity
+        )
+          ? steps
+          : 0,
+        calories,
+        distance,
+        activeTime: timeElapsed,
+      };
+
+      dispatch(updateMetrics(activityMetrics));
       dispatch(
         addActivity({
           name: selectedActivity,
-          calories: 4000,
-          distance: 2,
-          duration: 45,
+          duration: timeElapsed,
+          calories: Math.round(calories),
+          distance: parseFloat(distance.toFixed(2)),
+          steps: activityMetrics.steps,
         })
       );
     }
@@ -63,11 +73,11 @@ const Activity: React.FC = () => {
         />
         <ActivityControlButtons
           isActive={isActive}
-          startActivity={startActivity}
-          pauseActivity={pauseActivity}
-          stopActivity={stopActivity}
+          startActivity={handleStart}
+          pauseActivity={pauseTracking}
+          stopActivity={handleStop}
         />
-        <ActivityStats steps={steps} calories={calories} />
+        <ActivityStats steps={steps} calories={calories} distance={distance} />
       </MainCard>
       <Text style={styles.subTitle}>Choose Activity</Text>
       <ActivityButtons
@@ -81,6 +91,7 @@ const Activity: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
   },
   subTitle: {
     marginTop: 20,

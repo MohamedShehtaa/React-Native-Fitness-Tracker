@@ -6,18 +6,19 @@ import CircularProgressBar from '@/components/home/CircularProgressBar';
 import ProgressCards from '@/components/home/ProgressCards';
 import RecentActivities from '@/components/home/RecentActivities';
 import MainCard from '@/components/ui/MainCard';
+import { useAppSelector } from '@/redux/store';
+import { selectMetrics } from '@/redux/features/metrics/metricsSlice';
 
 const HomeScreen: React.FC = () => {
-  const steps = 1000;
-  const goal: number = 10000;
+  const metrics = useAppSelector(selectMetrics);
 
   return (
     <View style={styles.container}>
       <MainCard style={styles.mainCard}>
         <View style={styles.progressContainer}>
-          <CircularProgressBar steps={steps} goal={goal} />
+          <CircularProgressBar steps={metrics.steps} goal={10000} />
         </View>
-        <ProgressCards />
+        <ProgressCards metrics={metrics} />
       </MainCard>
 
       <RecentActivities />

@@ -5,10 +5,8 @@ import { SymbolWeight } from 'expo-symbols';
 import React from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
 
-// Add your SFSymbol to MaterialIcons mappings here.
 const MAPPING = {
-  // See MaterialIcons here: https://icons.expo.fyi
-  // See SF Symbols in the SF Symbols app on Mac.
+  // SF Symbols (iOS) : Material Icons (Android)
   'house.fill': 'home',
   'person.circle.fill': 'person',
   'waveform.path.ecg': 'show-chart',
@@ -17,6 +15,10 @@ const MAPPING = {
   'play.circle.fill': 'play-circle',
   'stop.circle.fill': 'stop-circle',
   'pause.circle.fill': 'pause-circle',
+  'figure.run': 'directions-run',
+  'figure.walk': 'directions-walk',
+  bicycle: 'directions-bike',
+  dumbbell: 'fitness-center',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
