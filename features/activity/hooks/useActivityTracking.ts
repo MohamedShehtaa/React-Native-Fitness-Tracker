@@ -5,7 +5,7 @@ import {
   StepBasedCoefficients,
   TimeBasedCoefficients,
 } from '@/types';
-import { ACTIVITY_COEFFICIENTS } from '@/constants/ActivityCoefficientsValues';
+import { ACTIVITY_COEFFICIENTS } from '@/features/activity/constants/ActivityCoefficientsValues';
 
 const useActivityTracker = () => {
   const [timeElapsed, setTimeElapsed] = useState(0);
