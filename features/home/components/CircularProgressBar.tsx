@@ -16,8 +16,6 @@ const CircularProgressBar: React.FC<CircularProgressBarProps> = ({
   const radius = 60;
   const circumference = 2 * Math.PI * radius;
   const progressOffset = circumference - (progress / 100) * circumference;
-
-  // Dynamic progress color
   const progressColor = progress >= 50 ? '#4CAF50' : '#007bff';
 
   return (

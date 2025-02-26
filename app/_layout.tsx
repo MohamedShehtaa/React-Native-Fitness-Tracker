@@ -13,8 +13,8 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import AppLoading from '@/components/ui/AppLoading';
-import { persistor, store } from '@/redux/store';
+import AppLoading from '@/components/Shared/AppLoading';
+import { persistor, store } from '@/store/store';
 
 SplashScreen.preventAutoHideAsync();
 

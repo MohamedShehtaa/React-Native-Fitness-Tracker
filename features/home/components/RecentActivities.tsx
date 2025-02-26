@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { useAppSelector } from '@/redux/store';
-import { selectRecentActivities } from '@/redux/features/activities/activitiesSlice';
-import ActivityListItem from '../history/ActivityListItem';
-import EmptyList from '../ui/EmptyList';
+import { useAppSelector } from '@/store/store';
+import ActivityListItem from '../../../components/Shared/ActivityListItem';
+import EmptyList from '../../../components/Shared/EmptyList';
+import { selectRecentActivities } from '@/store/reducers/activitiesSlice';
 
 const RecentActivities: React.FC = () => {
   const recentActivities = useAppSelector(selectRecentActivities);

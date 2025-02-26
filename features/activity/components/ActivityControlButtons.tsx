@@ -1,6 +1,6 @@
+import { IconSymbol } from '@/components/ui/IconSymbol';
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import { IconSymbol } from '../ui/IconSymbol';
 
 type ActivityControlButtonsProps = {
   isActive: boolean;

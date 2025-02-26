@@ -12,9 +12,9 @@ import {
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootState } from '@/types';
-import userReducer from './features/user/userSlice';
-import activitiesReducer from './features/activities/activitiesSlice';
-import metricsReducer from './features/metrics/metricsSlice';
+import userReducer from './reducers/userSlice';
+import activitiesReducer from './reducers/activitiesSlice';
+import metricsReducer from './reducers/metricsSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const rootReducer = combineReducers({

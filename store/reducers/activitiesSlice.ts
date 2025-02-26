@@ -19,7 +19,6 @@ const activitiesSlice = createSlice({
       reducer: (state, action: PayloadAction<Activity>) => {
         state.items.unshift(action.payload);
         state.recent.unshift(action.payload.id);
-        // Keep only last 5 recent activities
         if (state.recent.length > 5) state.recent.pop();
       },
       prepare: (activity: Omit<Activity, 'id' | 'createdAt'>) => ({

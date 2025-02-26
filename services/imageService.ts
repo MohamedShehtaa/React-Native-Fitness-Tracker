@@ -1,7 +1,5 @@
-// services/imageService.ts
 import * as FileSystem from 'expo-file-system';
 
-// Generate timestamp-based filename with random suffix
 const generateUniqueName = (uri: string) => {
   const timestamp = Date.now();
   const randomSuffix = Math.floor(Math.random() * 10000);
@@ -33,7 +31,7 @@ export const storeImage = async (uri: string): Promise<string> => {
     throw new Error('Failed to save image');
   }
 };
-
+// this for later
 // export const deleteImage = async (uri: string): Promise<void> => {
 //   try {
 //     const fileInfo = await FileSystem.getInfoAsync(uri);

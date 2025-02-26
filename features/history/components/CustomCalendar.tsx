@@ -1,8 +1,8 @@
 import React from 'react';
 import { Calendar, DateData } from 'react-native-calendars';
 import { Activity } from '@/types';
-import MainCard from '../ui/MainCard';
 import { Platform, StyleSheet } from 'react-native';
+import MainCard from '@/components/ui/MainCard';
 
 type CustomCalendarProps = {
   activities: Activity[];

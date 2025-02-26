@@ -1,6 +1,6 @@
+import { Activity } from '@/types';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Activity } from '@/types';
 
 type ActivityListItemProps = {
   item: Activity;

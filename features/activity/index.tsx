@@ -1,17 +1,16 @@
-import ActivityButtons from '@/components/activity/ActivityButtons';
-import ActivityControlButtons from '@/components/activity/ActivityControlButtons';
-import ActivityStats from '@/components/activity/ActivityStats';
-import ActivityTimer from '@/components/activity/ActivityTimer';
-import MainCard from '@/components/ui/MainCard';
-import { addActivity } from '@/redux/features/activities/activitiesSlice';
-import { updateMetrics } from '@/redux/features/metrics/metricsSlice';
-import { useAppDispatch } from '@/redux/store';
-import useActivityTracker from '@/hooks/useActivityTracking';
-import React from 'react';
-import { View, StyleSheet, Text, Alert } from 'react-native';
+import { useAppDispatch } from '@/store/store';
+import useActivityTracker from './hooks/useActivityTracking';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import { ActivityType } from '@/types';
+import { updateMetrics } from '@/store/reducers/metricsSlice';
+import { addActivity } from '@/store/reducers/activitiesSlice';
+import MainCard from '@/components/ui/MainCard';
+import ActivityTimer from './components/ActivityTimer';
+import ActivityControlButtons from './components/ActivityControlButtons';
+import ActivityStats from './components/ActivityStats';
+import ActivityButtons from './components/ActivityButtons';
 
-const Activity: React.FC = () => {
+const ActivityScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
     timeElapsed,
@@ -101,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Activity;
+export default ActivityScreen;
