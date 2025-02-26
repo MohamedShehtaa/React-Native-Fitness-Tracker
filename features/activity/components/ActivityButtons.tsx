@@ -1,8 +1,8 @@
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { ACTIVITY_ICONS } from '@/constants/ActivityIcons';
+import { ActivityType } from '@/types';
 import React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { IconSymbol } from '../ui/IconSymbol';
-import { ActivityType } from '@/types';
-import { ACTIVITY_ICONS } from '@/constants/ActivityIcons';
 
 type ActivityButtonsProps = {
   selectedActivity: ActivityType | null;

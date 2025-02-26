@@ -8,7 +8,7 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ScreenHeader from '@/components/ui/ScreenTitle';
+import ScreenHeader from '@/components/Shared/ScreenTitle';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();

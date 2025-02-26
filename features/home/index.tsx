@@ -2,12 +2,12 @@ import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 
 import { Colors } from '@/constants/Colors';
-import CircularProgressBar from '@/components/home/CircularProgressBar';
-import ProgressCards from '@/components/home/ProgressCards';
-import RecentActivities from '@/components/home/RecentActivities';
+import CircularProgressBar from '@/features/home/components/CircularProgressBar';
 import MainCard from '@/components/ui/MainCard';
-import { useAppSelector } from '@/redux/store';
-import { selectMetrics } from '@/redux/features/metrics/metricsSlice';
+import { useAppSelector } from '@/store/store';
+import { selectMetrics } from '@/store/reducers/metricsSlice';
+import RecentActivities from './components/RecentActivities';
+import ProgressCards from './components/ProgressCards';
 
 const HomeScreen: React.FC = () => {
   const metrics = useAppSelector(selectMetrics);

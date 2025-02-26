@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { IconSymbol } from '../ui/IconSymbol';
-import { useAppDispatch } from '@/redux/store';
-import { setProfileImage } from '@/redux/features/user/userSlice';
+import { IconSymbol } from '../../../components/ui/IconSymbol';
+import { useAppDispatch } from '@/store/store';
+import { setProfileImage } from '@/store/reducers/userSlice';
 import { storeImage } from '@/services/imageService';
 
 type UserImagePickerProps = {

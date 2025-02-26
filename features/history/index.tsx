@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
-import CustomCalendar from '@/components/history/CustomCalendar';
-import ExportButton from '@/components/history/ExportButton';
-import ClearFilterButton from '@/components/history/ClearFilterButton';
-import ActivitySectionList from '@/components/history/ActivitySectionList';
+import ExportButton from '@/features/history/components/ExportButton';
+import ClearFilterButton from '@/features/history/components/ClearFilterButton';
 import { Colors } from '@/constants/Colors';
-import useExport from '@/hooks/useExport';
+import useExport from '@/features/history/hooks/useExport';
 import { DateData } from 'react-native-calendars';
-import { useAppSelector } from '@/redux/store';
-import { selectActivities } from '@/redux/features/activities/activitiesSlice';
-import { formatDate } from '@/util/groupActivitiesByDate';
+import { useAppSelector } from '@/store/store';
+import { formatDate } from '@/util/date';
+import { selectActivities } from '@/store/reducers/activitiesSlice';
+import CustomCalendar from './components/CustomCalendar';
+import ActivitySectionList from './components/ActivitySectionList';
 
 const HistoryScreen: React.FC = () => {
   const activities = useAppSelector(selectActivities);

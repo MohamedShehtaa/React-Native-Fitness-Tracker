@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, SectionList, StyleSheet } from 'react-native';
-import ActivityListItem from '@/components/history/ActivityListItem';
+
 import { Activity } from '@/types';
 import { Colors } from '@/constants/Colors';
-import groupActivitiesByDate from '@/util/groupActivitiesByDate';
-import EmptyList from '../ui/EmptyList';
+import EmptyList from '../../../components/Shared/EmptyList';
+import groupActivitiesByDate from '@/util/date';
+import ActivityListItem from '../../../components/Shared/ActivityListItem';
 
 type ActivitySectionListProps = {
   activities: Activity[];

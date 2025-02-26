@@ -1,11 +1,11 @@
+import MainCard from '@/components/ui/MainCard';
+import { selectUserProfile } from '@/store/reducers/userSlice';
+import { useAppSelector } from '@/store/store';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import UserImagePicker from '@/components/user/UserImagePicker';
-import UserInfo from '@/components/user/UserInfo';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import MainCard from '@/components/ui/MainCard';
-import { useAppSelector } from '@/redux/store';
-import { selectUserProfile } from '@/redux/features/user/userSlice';
+import UserImagePicker from './components/UserImagePicker';
+import UserInfo from './components/UserInfo';
+import { Colors } from '@/constants/Colors';
 
 const ProfileScreen: React.FC = () => {
   const user = useAppSelector(selectUserProfile);
