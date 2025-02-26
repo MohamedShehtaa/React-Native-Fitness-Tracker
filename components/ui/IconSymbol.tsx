@@ -1,5 +1,3 @@
-// This file is a fallback for using MaterialIcons on Android and web.
-
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
 import React from 'react';
@@ -28,11 +26,6 @@ const MAPPING = {
 
 export type IconSymbolName = keyof typeof MAPPING;
 
-/**
- * An icon component that uses native SFSymbols on iOS, and MaterialIcons on Android and web. This ensures a consistent look across platforms, and optimal resource usage.
- *
- * Icon `name`s are based on SFSymbols and require manual mapping to MaterialIcons.
- */
 export function IconSymbol({
   name,
   size = 24,
