@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-
+import { useOrientation } from '@/hooks/useOrientation';
 import { HapticTab } from '@/components/ui/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -12,9 +12,13 @@ import ScreenHeader from '@/components/Shared/ScreenTitle';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { isLandscape } = useOrientation();
 
   return (
-    <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+    <SafeAreaView
+      style={{ flex: 1 }}
+      edges={isLandscape ? ['left', 'right'] : ['top']}
+    >
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -22,10 +26,17 @@ export default function TabLayout() {
           tabBarBackground: TabBarBackground,
           tabBarStyle: Platform.select({
             ios: {
-              position: 'absolute',
+              position: isLandscape ? 'absolute' : 'relative',
+              bottom: isLandscape ? 0 : undefined,
+              height: isLandscape ? 60 : 80,
             },
-            default: {},
+            android: {
+              height: isLandscape ? 60 : 80,
+            },
           }),
+          tabBarItemStyle: {
+            paddingVertical: isLandscape ? 4 : 8,
+          },
         }}
       >
         <Tabs.Screen
@@ -35,7 +46,12 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="house.fill" color={color} />
             ),
-            header: (props) => <ScreenHeader title={props.options.title} />,
+            header: (props) => (
+              <ScreenHeader
+                title={props.options.title}
+                orientation={isLandscape ? 'landscape' : 'portrait'}
+              />
+            ),
           }}
         />
         <Tabs.Screen
@@ -45,7 +61,12 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="waveform.path.ecg" color={color} />
             ),
-            header: (props) => <ScreenHeader title={props.options.title} />,
+            header: (props) => (
+              <ScreenHeader
+                title={props.options.title}
+                orientation={isLandscape ? 'landscape' : 'portrait'}
+              />
+            ),
           }}
         />
         <Tabs.Screen
@@ -55,7 +76,12 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="calendar" color={color} />
             ),
-            header: (props) => <ScreenHeader title={props.options.title} />,
+            header: (props) => (
+              <ScreenHeader
+                title={props.options.title}
+                orientation={isLandscape ? 'landscape' : 'portrait'}
+              />
+            ),
           }}
         />
         <Tabs.Screen
@@ -65,7 +91,12 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="person.circle.fill" color={color} />
             ),
-            header: (props) => <ScreenHeader title={props.options.title} />,
+            header: (props) => (
+              <ScreenHeader
+                title={props.options.title}
+                orientation={isLandscape ? 'landscape' : 'portrait'}
+              />
+            ),
           }}
         />
       </Tabs>

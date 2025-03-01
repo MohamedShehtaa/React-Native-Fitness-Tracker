@@ -22,6 +22,11 @@ export interface FitnessMetrics {
   lastUpdated: string;
 }
 
+export interface Orientation {
+  orientation: 'PORTRAIT' | 'LANDSCAPE';
+  locked: boolean;
+}
+
 export interface RootState {
   user: User;
   activities: {
@@ -29,6 +34,7 @@ export interface RootState {
     recent: string[];
   };
   fitnessMetrics: FitnessMetrics;
+  orientation: Orientation;
 }
 
 export enum ActivityType {

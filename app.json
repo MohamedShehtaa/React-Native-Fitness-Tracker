@@ -3,7 +3,6 @@
     "name": "Fitness Tracker",
     "slug": "fitness-tracker",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/images/fitness.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -12,14 +11,17 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allow access to photo library to upload profile pictures"
-      }
+      },
+      "requireFullScreen": true,
+      "screenOrientation": "unspecified"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+      "screenOrientation": "unspecified"
     },
     "web": {
       "bundler": "metro",

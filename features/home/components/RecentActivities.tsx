@@ -12,12 +12,14 @@ const RecentActivities: React.FC = () => {
     <View style={styles.activityContainer}>
       <Text style={styles.sectionTitle}>Recent Activities</Text>
       <FlatList
-        style={{ maxHeight: 200 }}
+        style={[{ maxHeight: 200 }]}
         data={recentActivities}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ActivityListItem item={item} />}
         ListEmptyComponent={<EmptyList message="No Activities to Show" />}
         showsVerticalScrollIndicator={false}
+        nestedScrollEnabled={true}
+        scrollEnabled={true}
       />
     </View>
   );
@@ -25,14 +27,14 @@ const RecentActivities: React.FC = () => {
 
 const styles = StyleSheet.create({
   activityContainer: {
-    marginTop: 16,
+    marginTop: 14,
     width: '100%',
     paddingHorizontal: 8,
   },
   sectionTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 16,
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 20,
     color: '#333',
     textAlign: 'left',
   },

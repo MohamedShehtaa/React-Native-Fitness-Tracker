@@ -10,17 +10,19 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootState } from '@/types';
 import userReducer from './reducers/userSlice';
 import activitiesReducer from './reducers/activitiesSlice';
 import metricsReducer from './reducers/metricsSlice';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import orientationReducer from './reducers/orientationSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
   activities: activitiesReducer,
   fitnessMetrics: metricsReducer,
+  orientation: orientationReducer,
 });
 
 const persistConfig = {

@@ -15,8 +15,30 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import AppLoading from '@/components/Shared/AppLoading';
 import { persistor, store } from '@/store/store';
+import OrientationListener from '@/components/utility/OrientationListener';
+import { useOrientation } from '@/hooks/useOrientation';
 
 SplashScreen.preventAutoHideAsync();
+
+function LayoutContent() {
+  const { isLandscape } = useOrientation();
+
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: {
+          flex: isLandscape ? undefined : 1,
+          minHeight: isLandscape ? '100%' : undefined,
+        },
+      }}
+    >
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
+      <StatusBar style="auto" />
+    </Stack>
+  );
+}
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -41,10 +63,8 @@ export default function RootLayout() {
           <ThemeProvider
             value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
           >
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="+not-found" />
-            </Stack>
+            <OrientationListener />
+            <LayoutContent />
             <StatusBar style="auto" />
           </ThemeProvider>
         </SafeAreaProvider>

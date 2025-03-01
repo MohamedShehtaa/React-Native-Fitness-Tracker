@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/store/store';
 import useActivityTracker from './hooks/useActivityTracking';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text } from 'react-native';
 import { ActivityType } from '@/types';
 import { updateMetrics } from '@/store/reducers/metricsSlice';
 import { addActivity } from '@/store/reducers/activitiesSlice';
@@ -9,6 +9,7 @@ import ActivityTimer from './components/ActivityTimer';
 import ActivityControlButtons from './components/ActivityControlButtons';
 import ActivityStats from './components/ActivityStats';
 import ActivityButtons from './components/ActivityButtons';
+import ScrollableView from '@/components/ui/ScrollableView';
 
 const ActivityScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -63,7 +64,7 @@ const ActivityScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollableView style={styles.container} minHeight={600}>
       <MainCard>
         <ActivityTimer
           isActive={isActive}
@@ -83,14 +84,14 @@ const ActivityScreen: React.FC = () => {
         selectedActivity={selectedActivity}
         setSelectedActivity={setSelectedActivity}
       />
-    </View>
+    </ScrollableView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 8,
   },
   subTitle: {
     marginTop: 20,

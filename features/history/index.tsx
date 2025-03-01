@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import ExportButton from '@/features/history/components/ExportButton';
 import ClearFilterButton from '@/features/history/components/ClearFilterButton';
 import { Colors } from '@/constants/Colors';
@@ -10,6 +10,8 @@ import { formatDate } from '@/util/date';
 import { selectActivities } from '@/store/reducers/activitiesSlice';
 import CustomCalendar from './components/CustomCalendar';
 import ActivitySectionList from './components/ActivitySectionList';
+import ScrollableView from '@/components/ui/ScrollableView';
+import MainCard from '@/components/ui/MainCard';
 
 const HistoryScreen: React.FC = () => {
   const activities = useAppSelector(selectActivities);
@@ -26,15 +28,14 @@ const HistoryScreen: React.FC = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={styles.container}
-    >
-      <CustomCalendar
-        activities={activities}
-        selectedDate={selectedDate}
-        onDayPress={handleDayPress}
-      />
+    <ScrollableView style={styles.container}>
+      <MainCard style={styles.mainCard}>
+        <CustomCalendar
+          activities={activities}
+          selectedDate={selectedDate}
+          onDayPress={handleDayPress}
+        />
+      </MainCard>
 
       <View style={styles.listContainer}>
         <ActivitySectionList activities={filteredActivities} />
@@ -51,7 +52,7 @@ const HistoryScreen: React.FC = () => {
           onPress={() => exportCsv(activities)}
         />
       </View>
-    </KeyboardAvoidingView>
+    </ScrollableView>
   );
 };
 
@@ -60,6 +61,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.mainBackground,
     padding: 16,
+  },
+  mainCard: {
+    flexBasis: Platform.OS === 'ios' ? '50%' : '60%',
+    padding: Platform.OS === 'ios' ? 5 : 2,
+    alignItems: 'stretch',
+    marginHorizontal: 0,
   },
   listContainer: {
     flex: 1,

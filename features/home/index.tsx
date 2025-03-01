@@ -8,21 +8,24 @@ import { useAppSelector } from '@/store/store';
 import { selectMetrics } from '@/store/reducers/metricsSlice';
 import RecentActivities from './components/RecentActivities';
 import ProgressCards from './components/ProgressCards';
+import ScrollableView from '@/components/ui/ScrollableView';
 
 const HomeScreen: React.FC = () => {
   const metrics = useAppSelector(selectMetrics);
 
   return (
-    <View style={styles.container}>
-      <MainCard style={styles.mainCard}>
-        <View style={styles.progressContainer}>
-          <CircularProgressBar steps={metrics.steps} goal={10000} />
-        </View>
-        <ProgressCards metrics={metrics} />
-      </MainCard>
+    <ScrollableView style={styles.container} minHeight={600}>
+      <View>
+        <MainCard style={styles.mainCard}>
+          <View style={styles.progressContainer}>
+            <CircularProgressBar steps={metrics.steps} goal={10000} />
+          </View>
+          <ProgressCards metrics={metrics} />
+        </MainCard>
 
-      <RecentActivities />
-    </View>
+        <RecentActivities />
+      </View>
+    </ScrollableView>
   );
 };
 
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     alignItems: 'stretch',
     marginHorizontal: 0,
-    marginBottom: 28,
+    marginBottom: 24,
   },
 });
 

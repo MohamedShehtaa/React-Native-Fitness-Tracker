@@ -6,6 +6,7 @@ import { Colors } from '@/constants/Colors';
 import EmptyList from '../../../components/Shared/EmptyList';
 import groupActivitiesByDate from '@/util/date';
 import ActivityListItem from '../../../components/Shared/ActivityListItem';
+import { useOrientation } from '@/hooks/useOrientation';
 
 type ActivitySectionListProps = {
   activities: Activity[];
@@ -14,10 +15,11 @@ type ActivitySectionListProps = {
 const ActivitySectionList: React.FC<ActivitySectionListProps> = ({
   activities,
 }) => {
+  const { isLandscape } = useOrientation();
   const categorizedActivities = groupActivitiesByDate(activities);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isLandscape && { maxHeight: 300 }]}>
       <SectionList
         sections={categorizedActivities}
         keyExtractor={(item) => item.id}
@@ -27,6 +29,8 @@ const ActivitySectionList: React.FC<ActivitySectionListProps> = ({
         renderItem={({ item }) => <ActivityListItem item={item} />}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={<EmptyList message="No Activities" />}
+        nestedScrollEnabled={true}
+        scrollEnabled={true}
       />
     </View>
   );

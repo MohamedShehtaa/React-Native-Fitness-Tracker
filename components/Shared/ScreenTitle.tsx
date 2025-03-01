@@ -1,48 +1,40 @@
-import { Colors } from '@/constants/Colors';
-import React from 'react';
-import { View, Text, StyleSheet, Platform, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
 type ScreenHeaderProps = {
   title?: string;
+  orientation?: 'portrait' | 'landscape';
 };
-const ScreenHeader: React.FC<ScreenHeaderProps> = ({ title }) => {
-  const colorScheme = useColorScheme();
 
-  return (
-    <View
+const ScreenHeader = ({ title, orientation }: ScreenHeaderProps) => (
+  <View
+    style={[styles.container, orientation === 'landscape' && styles.landscape]}
+  >
+    <Text
       style={[
-        styles.header,
-        {
-          backgroundColor:
-            colorScheme === 'light'
-              ? Colors.mainBackground
-              : Colors['dark'].background,
-        },
+        styles.title,
+        orientation === 'landscape' && styles.landscapeTitle,
       ]}
     >
-      <Text
-        style={[
-          styles.headerText,
-          {
-            color: Colors[colorScheme ?? 'light'].text,
-          },
-        ]}
-      >
-        {title}
-      </Text>
-    </View>
-  );
-};
+      {title}
+    </Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
-  header: {
+  container: {
+    padding: 8,
     marginTop: Platform.OS === 'ios' ? 30 : 20,
-    marginBottom: 10,
-    marginLeft: 12,
   },
-  headerText: {
+  landscape: {
+    paddingHorizontal: 4,
+    marginTop: Platform.OS === 'ios' ? 50 : 40,
+  },
+  title: {
     fontSize: 20,
     fontWeight: '600',
+  },
+  landscapeTitle: {
+    fontSize: 24,
   },
 });
 
