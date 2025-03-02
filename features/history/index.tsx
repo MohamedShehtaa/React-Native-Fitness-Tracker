@@ -6,11 +6,11 @@ import { Colors } from '@/constants/Colors';
 import useExport from '@/features/history/hooks/useExport';
 import { DateData } from 'react-native-calendars';
 import { useAppSelector } from '@/store/store';
-import { formatDate } from '@/util/date';
+import { formatDate } from '@/features/history/util/date';
 import { selectActivities } from '@/store/reducers/activitiesSlice';
 import CustomCalendar from './components/CustomCalendar';
 import ActivitySectionList from './components/ActivitySectionList';
-import ScrollableView from '@/components/ui/ScrollableView';
+import ScrollableView from '@/features/orientation/components/ScrollableView';
 import MainCard from '@/components/ui/MainCard';
 
 const HistoryScreen: React.FC = () => {

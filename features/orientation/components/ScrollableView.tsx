@@ -1,4 +1,4 @@
-import { useOrientation } from '@/hooks/useOrientation';
+import { useOrientation } from '@/features/orientation/hooks/useOrientation';
 import {
   KeyboardAvoidingView,
   Platform,

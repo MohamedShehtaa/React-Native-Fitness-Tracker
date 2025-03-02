@@ -1,4 +1,4 @@
-import { storeImage } from '@/services/imageService';
+import { storeImage } from '@/features/profile/services/imageService';
 import { setProfileImage } from '@/store/reducers/userSlice';
 import { AppDispatch } from '@/store/store';
 import * as ImagePicker from 'expo-image-picker';

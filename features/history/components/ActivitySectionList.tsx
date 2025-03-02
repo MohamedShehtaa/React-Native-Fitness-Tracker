@@ -4,9 +4,9 @@ import { View, Text, SectionList, StyleSheet } from 'react-native';
 import { Activity } from '@/types';
 import { Colors } from '@/constants/Colors';
 import EmptyList from '../../../components/Shared/EmptyList';
-import groupActivitiesByDate from '@/util/date';
+import groupActivitiesByDate from '@/features/history/util/date';
 import ActivityListItem from '../../../components/Shared/ActivityListItem';
-import { useOrientation } from '@/hooks/useOrientation';
+import { useOrientation } from '@/features/orientation/hooks/useOrientation';
 
 type ActivitySectionListProps = {
   activities: Activity[];

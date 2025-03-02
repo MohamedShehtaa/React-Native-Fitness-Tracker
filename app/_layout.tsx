@@ -16,8 +16,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import AppLoading from '@/components/Shared/AppLoading';
 import { persistor, store } from '@/store/store';
-import OrientationListener from '@/components/utility/OrientationListener';
-import { useOrientation } from '@/hooks/useOrientation';
+import { useOrientation } from '@/features/orientation/hooks/useOrientation';
+import OrientationListener from '@/features/orientation';
 
 SplashScreen.preventAutoHideAsync();
 

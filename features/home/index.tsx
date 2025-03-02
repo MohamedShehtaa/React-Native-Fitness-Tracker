@@ -8,7 +8,7 @@ import { useAppSelector } from '@/store/store';
 import { selectMetrics } from '@/store/reducers/metricsSlice';
 import RecentActivities from './components/RecentActivities';
 import ProgressCards from './components/ProgressCards';
-import ScrollableView from '@/components/ui/ScrollableView';
+import ScrollableView from '@/features/orientation/components/ScrollableView';
 
 const HomeScreen: React.FC = () => {
   const metrics = useAppSelector(selectMetrics);

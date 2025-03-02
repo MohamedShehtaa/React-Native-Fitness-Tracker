@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { IconSymbol } from '../../../components/ui/IconSymbol';
 import { useAppDispatch } from '@/store/store';
 import { useImagePicker } from '../hooks/useImagePicker';
-import { showImageSourceAlert } from '@/util/imagePickerUtils';
+import { showImageSourceAlert } from '@/features/history/util/imagePickerUtils';
 
 type UserImagePickerProps = {
   profileImage: string | null;

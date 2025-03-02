@@ -1,5 +1,5 @@
 import { AppDispatch } from '@/store/store';
-import { handleImagePicker } from '@/util/imagePickerUtils';
+import { handleImagePicker } from '@/features/history/util/imagePickerUtils';
 import { useCallback } from 'react';
 
 export const useImagePicker = (dispatch: AppDispatch) => {

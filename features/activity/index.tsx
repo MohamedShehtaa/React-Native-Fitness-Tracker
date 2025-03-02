@@ -9,7 +9,7 @@ import ActivityTimer from './components/ActivityTimer';
 import ActivityControlButtons from './components/ActivityControlButtons';
 import ActivityStats from './components/ActivityStats';
 import ActivityButtons from './components/ActivityButtons';
-import ScrollableView from '@/components/ui/ScrollableView';
+import ScrollableView from '@/features/orientation/components/ScrollableView';
 
 const ActivityScreen: React.FC = () => {
   const dispatch = useAppDispatch();
