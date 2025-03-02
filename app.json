@@ -10,7 +10,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Allow access to photo library to upload profile pictures"
+        "NSPhotoLibraryUsageDescription": "Allow access to photo library to upload profile pictures",
+        "NSCameraUsageDescription": "Allow access to camera to take profile pictures"
       },
       "requireFullScreen": true,
       "screenOrientation": "unspecified"
@@ -20,7 +21,11 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "screenOrientation": "unspecified"
     },
     "web": {
@@ -43,6 +48,13 @@
         "expo-sensors",
         {
           "motionPermission": "Allow Fitness Track App To Access Your Motion Sensors"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you set profile pictures.",
+          "cameraPermission": "The app accesses your camera to let you take profile pictures."
         }
       ]
     ],
