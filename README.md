@@ -2,6 +2,8 @@
 
 React Native Fitness Tracker is a react native re-skilling task app
 
+![Demo](./assets/Demo/Demo-ezgif.com-video-to-gif-converter.gif)
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
