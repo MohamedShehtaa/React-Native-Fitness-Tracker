@@ -8,8 +8,12 @@ import {
   StyleSheet,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { cancelReminders, initializeNotifications, loadNotificationSettings, scheduleDailyReminder } from './services/notificationService';
-
+import {
+  cancelReminders,
+  initializeNotifications,
+  loadNotificationSettings,
+  scheduleDailyReminder,
+} from './services/notificationService';
 
 const NotificationsReminder = () => {
   const [isEnabled, setIsEnabled] = useState(false);
