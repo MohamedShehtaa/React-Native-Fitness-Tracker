@@ -1,4 +1,3 @@
-// imagePickerUtils.ts
 import { storeImage } from '@/services/imageService';
 import { setProfileImage } from '@/store/reducers/userSlice';
 import { AppDispatch } from '@/store/store';

@@ -1,4 +1,3 @@
-// useImagePicker.ts
 import { AppDispatch } from '@/store/store';
 import { handleImagePicker } from '@/util/imagePickerUtils';
 import { useCallback } from 'react';

@@ -1,4 +1,3 @@
-// UserImagePicker.tsx (refactored component)
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { IconSymbol } from '../../../components/ui/IconSymbol';
