@@ -1,10 +1,10 @@
+// UserImagePicker.tsx (refactored component)
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { IconSymbol } from '../../../components/ui/IconSymbol';
 import { useAppDispatch } from '@/store/store';
-import { setProfileImage } from '@/store/reducers/userSlice';
-import { storeImage } from '@/services/imageService';
+import { useImagePicker } from '../hooks/useImagePicker';
+import { showImageSourceAlert } from '@/util/imagePickerUtils';
 
 type UserImagePickerProps = {
   profileImage: string | null;
@@ -12,35 +12,9 @@ type UserImagePickerProps = {
 
 const UserImagePicker: React.FC<UserImagePickerProps> = ({ profileImage }) => {
   const dispatch = useAppDispatch();
+  const { handleLibrary, handleCamera } = useImagePicker(dispatch);
 
-  const pickImage = async () => {
-    try {
-      const { status } =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert(
-          'Permission required',
-          'We need camera roll access to upload images'
-        );
-        return;
-      }
-
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [1, 1],
-        quality: 1,
-      });
-
-      if (!result.canceled && result.assets[0].uri) {
-        const permanentUri = await storeImage(result.assets[0].uri);
-        dispatch(setProfileImage(permanentUri));
-      }
-    } catch (error) {
-      Alert.alert('Upload Error', 'Failed to save profile image');
-      console.error('Image upload error:', error);
-    }
-  };
+  const pickImage = () => showImageSourceAlert(handleLibrary, handleCamera);
 
   return (
     <TouchableOpacity onPress={pickImage}>
