@@ -99,6 +99,33 @@ export default function TabLayout() {
             ),
           }}
         />
+        <Tabs.Screen
+          name="settings"
+          options={{
+            title: 'Settings',
+            tabBarIcon: ({ color }) => (
+              <IconSymbol size={28} name="gearshape.fill" color={color} />
+            ),
+            header: (props) => (
+              <ScreenHeader
+                title={props.options.title}
+                orientation={isLandscape ? 'landscape' : 'portrait'}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="reminder-settings"
+          options={{
+            title: 'Reminder Settings',
+            href: null,
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: Colors[colorScheme ?? 'light'].background,
+            },
+            headerTintColor: Colors[colorScheme ?? 'light'].tint,
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );

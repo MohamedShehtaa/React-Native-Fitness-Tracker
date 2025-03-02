@@ -17,6 +17,8 @@ const MAPPING = {
   'figure.walk': 'directions-walk',
   bicycle: 'directions-bike',
   dumbbell: 'fitness-center',
+  'chevron.right': 'chevron-right',
+  'gearshape.fill': 'settings',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],
