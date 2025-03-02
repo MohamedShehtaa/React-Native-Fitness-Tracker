@@ -7,6 +7,7 @@ import {
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import * as Notifications from 'expo-notifications';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -50,6 +51,15 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
+
+  useEffect(() => {
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        console.log('Notification tapped:', response.notification);
+      }
+    );
+    return () => subscription.remove();
+  }, []);
 
   if (!loaded) {
     return <AppLoading />;
