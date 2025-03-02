@@ -88,7 +88,7 @@ const ActivityScreen: React.FC = () => {
           />
         </MainCard>
       ) : (
-        <MainCard>
+        <MainCard style={{ padding: 0, paddingTop: 4 }}>
           <ActivityTimer
             isActive={isActive}
             timeElapsed={timeElapsed}

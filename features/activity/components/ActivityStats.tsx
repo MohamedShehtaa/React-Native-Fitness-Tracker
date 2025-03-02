@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginVertical: 24,
+    marginBottom: 20,
   },
   stats: {
     backgroundColor: Colors.mainBackground,

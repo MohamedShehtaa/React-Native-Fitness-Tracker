@@ -4,6 +4,7 @@ import { ActivityType } from '@/types';
 import React, { useState } from 'react';
 import {
   Alert,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
     marginVertical: 8,
     color: '#333',
   },
