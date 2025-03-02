@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/store/store';
 import useActivityTracker from './hooks/useActivityTracking';
-import { Alert, StyleSheet, Text } from 'react-native';
+import { Alert, StyleSheet, Switch, Text, View } from 'react-native';
 import { ActivityType } from '@/types';
 import { updateMetrics } from '@/store/reducers/metricsSlice';
 import { addActivity } from '@/store/reducers/activitiesSlice';
@@ -10,6 +10,8 @@ import ActivityControlButtons from './components/ActivityControlButtons';
 import ActivityStats from './components/ActivityStats';
 import ActivityButtons from './components/ActivityButtons';
 import ScrollableView from '@/features/orientation/components/ScrollableView';
+import { useState } from 'react';
+import ManualEntryForm from './components/ManualEntryForm';
 
 const ActivityScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +28,8 @@ const ActivityScreen: React.FC = () => {
     pauseTracking,
     stopTracking,
   } = useActivityTracker();
+
+  const [isManualMode, setIsManualMode] = useState(false);
 
   const handleStart = async () => {
     try {
@@ -65,20 +69,45 @@ const ActivityScreen: React.FC = () => {
 
   return (
     <ScrollableView style={styles.container} minHeight={600}>
-      <MainCard>
-        <ActivityTimer
-          isActive={isActive}
-          timeElapsed={timeElapsed}
-          setTimeElapsed={setTimeElapsed}
+      <View style={styles.modeToggle}>
+        <Text>Tracking Mode</Text>
+        <Switch
+          value={!isManualMode}
+          onValueChange={() => setIsManualMode(!isManualMode)}
+          trackColor={{ false: '#767577', true: '#81b0ff' }}
+          thumbColor={isManualMode ? '#f4f3f4' : '#f5dd4b'}
         />
-        <ActivityControlButtons
-          isActive={isActive}
-          startActivity={handleStart}
-          pauseActivity={pauseTracking}
-          stopActivity={handleStop}
-        />
-        <ActivityStats steps={steps} calories={calories} distance={distance} />
-      </MainCard>
+        <Text>Manual Entry</Text>
+      </View>
+
+      {isManualMode ? (
+        <MainCard>
+          <ManualEntryForm
+            selectedActivity={selectedActivity}
+            onSuccess={() => setIsManualMode(false)}
+          />
+        </MainCard>
+      ) : (
+        <MainCard>
+          <ActivityTimer
+            isActive={isActive}
+            timeElapsed={timeElapsed}
+            setTimeElapsed={setTimeElapsed}
+          />
+          <ActivityControlButtons
+            isActive={isActive}
+            startActivity={handleStart}
+            pauseActivity={pauseTracking}
+            stopActivity={handleStop}
+          />
+          <ActivityStats
+            steps={steps}
+            calories={calories}
+            distance={distance}
+          />
+        </MainCard>
+      )}
+
       <Text style={styles.subTitle}>Choose Activity</Text>
       <ActivityButtons
         selectedActivity={selectedActivity}
@@ -98,6 +127,13 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 18,
     fontWeight: '600',
+  },
+  modeToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 16,
+    paddingHorizontal: 12,
   },
 });
 
